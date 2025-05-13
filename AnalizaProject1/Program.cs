@@ -25,6 +25,16 @@ class Program
         return IsInputAvailable(input) && IsAllPositiveNum(input) && IsThreePositiveNum(input);
     }
 
+    static string [] RumValidInputLoop(string[] input)
+    {
+        while (!IsValidInput(input))
+        {
+            Console.WriteLine("invalid input");
+            input = GetNewInput();
+        }
+        return input;
+    }
+
     static string[] GetNewInput()
     {
         Console.WriteLine("Please enter a series of at least positive number");
@@ -120,6 +130,7 @@ class Program
         switch (choice)
         {
             case 1:
+                RumValidInputLoop(GetNewInput());
                 break;
             case 2:
                 PrintOrder(input);
@@ -156,11 +167,8 @@ class Program
 
     static void Main(string[] args)
     {
-        while (!IsValidInput(args))
-        {
-            Console.WriteLine("invalid input");
-            args = GetNewInput();
-        }
+        args = RumValidInputLoop(args);
+
 
         while (true)
         {
