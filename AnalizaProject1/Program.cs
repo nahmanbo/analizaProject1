@@ -123,14 +123,14 @@ class Program
     
     
 
-    static void RumMenu(string[] input)
+    static string[] RumMenu(string[] input)
     {
         PrintMenu();
         int choice = Convert.ToInt32(Console.ReadLine());
         switch (choice)
         {
             case 1:
-                RumValidInputLoop(GetNewInput());
+                input = RumValidInputLoop(GetNewInput());
                 break;
             case 2:
                 PrintOrder(input);
@@ -161,18 +161,18 @@ class Program
                 break;
             default:
                 Console.WriteLine("error");
-                break;
+                break; 
         }
+        return input;
+
     }
 
     static void Main(string[] args)
     {
         args = RumValidInputLoop(args);
-
-
         while (true)
         {
-            RumMenu(args);
+           args = RumMenu(args);
         } 
     }
 }
