@@ -72,10 +72,7 @@ class Program
     static void PrintSorted(int[] input)
     {
         Array.Sort(input);
-
-        for (int i = 0; i < input.Length; i++)
-            Console.Write(input[i] + " "); 
-        Console.WriteLine();
+        Console.WriteLine(string.Join(' ', input));
     }
 
     //--------------------------------------------------------------
