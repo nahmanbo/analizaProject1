@@ -1,0 +1,15 @@
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/bin/Debug/net9.0/AnalizaProject1
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/bin/Debug/net9.0/AnalizaProject1.deps.json
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/bin/Debug/net9.0/AnalizaProject1.runtimeconfig.json
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/bin/Debug/net9.0/AnalizaProject1.dll
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/bin/Debug/net9.0/AnalizaProject1.pdb
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.AssemblyInfoInputs.cache
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.AssemblyInfo.cs
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.csproj.CoreCompileInputs.cache
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.sourcelink.json
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.dll
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/refint/AnalizaProject1.dll
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.pdb
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/AnalizaProject1.genruntimeconfig.cache
+/Users/nahmanbo1/Desktop/RiderProjects/AnalizaProject1/AnalizaProject1/obj/Debug/net9.0/ref/AnalizaProject1.dll
