@@ -62,15 +62,20 @@ class Program
     //--------------------------------------------------------------
     static void PrintReversed(string[] input)
     {
-        Console.WriteLine(string.Join(' ', input.Reverse()));
+        for (int i = input.Length - 1; i >= 0; i--)
+            Console.Write(input[i] + " ");
+        
+        Console.WriteLine();
     }
 
     //--------------------------------------------------------------
     static void PrintSorted(int[] input)
     {
-        int[] sorted = (int[])input.Clone();
-        Array.Sort(sorted);
-        Console.WriteLine(string.Join(' ', sorted));
+        Array.Sort(input);
+
+        for (int i = 0; i < input.Length; i++)
+            Console.Write(input[i] + " "); 
+        Console.WriteLine();
     }
 
     //--------------------------------------------------------------
