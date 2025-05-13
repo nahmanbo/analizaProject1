@@ -2,92 +2,98 @@
 
 class Program
 {
+    //--------------------------------------------------------------
     static bool IsInputAvailable(string[] input)
     {
         return input.Length > 0;
     }
 
+    //--------------------------------------------------------------
     static bool IsAllPositiveNum(string[] input)
     {
         foreach (string item in input)
             if (!item.All(char.IsDigit))
-                return false;    
+                return false;
         return true;
     }
 
+    //--------------------------------------------------------------
     static bool IsThreePositiveNum(string[] input)
     {
         return input.Length >= 3;
     }
 
+    //--------------------------------------------------------------
     static bool IsValidInput(string[] input)
     {
         return IsInputAvailable(input) && IsAllPositiveNum(input) && IsThreePositiveNum(input);
     }
 
-    static string [] RumValidInputLoop(string[] input)
+    //--------------------------------------------------------------
+    static string[] RunValidInputLoop(string[] input)
     {
         while (!IsValidInput(input))
         {
-            Console.WriteLine("invalid input");
+            Console.WriteLine("Invalid input.");
             input = GetNewInput();
         }
         return input;
     }
 
+    //--------------------------------------------------------------
     static string[] GetNewInput()
     {
-        Console.WriteLine("Please enter a series of at least positive number");
-        string[] numbers = Console.ReadLine().Split(' ');
-        return numbers;
+        Console.WriteLine("Please enter a series of at least 3 positive numbers:");
+        return Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
     }
-    
+
+    //--------------------------------------------------------------
     static int[] ToIntArray(string[] input)
     {
-        int[] asIntegers = input.Select(s => int.Parse(s)).ToArray();
-        return asIntegers;
+        return input.Select(s => int.Parse(s)).ToArray();
     }
 
+    //--------------------------------------------------------------
     static void PrintOrder(string[] input)
     {
-        foreach (string item in input)
-            Console.Write(item + " ");
-        Console.WriteLine();
+        Console.WriteLine(string.Join(' ', input));
     }
 
+    //--------------------------------------------------------------
     static void PrintReversed(string[] input)
     {
-        for (int i = input.Length - 1; i >= 0; i--)
-            Console.Write(input[i] + " ");
-        Console.WriteLine();
+        Console.WriteLine(string.Join(' ', input.Reverse()));
     }
+
+    //--------------------------------------------------------------
     static void PrintSorted(int[] input)
     {
-        int[] sorted = (int[])input.Clone(); 
-        Array.Sort(sorted);                  
-
-        foreach (int num in sorted)
-            Console.Write(num + " ");
-        Console.WriteLine();
+        int[] sorted = (int[])input.Clone();
+        Array.Sort(sorted);
+        Console.WriteLine(string.Join(' ', sorted));
     }
 
+    //--------------------------------------------------------------
     static int MaxArray(int[] input)
     {
-        int max = 0;
+        int max = input[0];
         foreach (int num in input)
             if (max < num)
                 max = num;
         return max;
     }
+
+    //--------------------------------------------------------------
     static int MinArray(int[] input)
     {
-        int min = int.MaxValue;
+        int min = input[0];
         foreach (int num in input)
             if (min > num)
-                min = num; 
+                min = num;
         return min;
     }
 
+    //--------------------------------------------------------------
     static int SumArray(int[] input)
     {
         int sum = 0;
@@ -96,41 +102,52 @@ class Program
         return sum;
     }
 
-    static int LenArray(int [] input)
+    //--------------------------------------------------------------
+    static int LenArray(int[] input)
     {
         return input.Length;
     }
 
+    //--------------------------------------------------------------
     static float AvgArray(int[] input)
     {
         return (float)SumArray(input) / LenArray(input);
     }
 
+    //--------------------------------------------------------------
     static void PrintMenu()
     {
-        Console.WriteLine(@"menu:
-        1. Input a Series. (Replace the current series)
-        2. Display the series in the order it was entered.
-        3. Display the series in the reversed order it was entered.
-        4. Display the series in sorted order (from low to high).
-        5. Display the Max value of the series.
-        6. Display the Min value of the series.
-        7. Display the Average of the series.
-        8. Display the Number of elements in the series.
-        9. Display the Sum of the series.
-        10. Exit.");
+        Console.WriteLine(@"
+Menu:
+1. Input a Series (replace the current series)
+2. Display the series in the order it was entered
+3. Display the series in the reversed order
+4. Display the series in sorted order (from low to high)
+5. Display the Max value of the series
+6. Display the Min value of the series
+7. Display the Average of the series
+8. Display the Number of elements in the series
+9. Display the Sum of the series
+10. Exit
+");
     }
-    
-    
 
-    static string[] RumMenu(string[] input)
+    //--------------------------------------------------------------
+    static (string[] updatedInput, bool keepRunning) RunMenu(string[] input)
     {
         PrintMenu();
-        int choice = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter your choice: ");
+
+        if (!int.TryParse(Console.ReadLine(), out int choice))
+        {
+            Console.WriteLine("Invalid choice, please enter a number.");
+            return (input, true);
+        }
+
         switch (choice)
         {
             case 1:
-                input = RumValidInputLoop(GetNewInput());
+                input = RunValidInputLoop(GetNewInput());
                 break;
             case 2:
                 PrintOrder(input);
@@ -142,37 +159,40 @@ class Program
                 PrintSorted(ToIntArray(input));
                 break;
             case 5:
-                Console.WriteLine($"max is = :{MaxArray(ToIntArray(input))}");
+                Console.WriteLine($"Max is: {MaxArray(ToIntArray(input))}");
                 break;
             case 6:
-                Console.WriteLine($"min is = :{MinArray(ToIntArray(input))}");
+                Console.WriteLine($"Min is: {MinArray(ToIntArray(input))}");
                 break;
             case 7:
-                Console.WriteLine($"average is = :{AvgArray(ToIntArray(input))}");
+                Console.WriteLine($"Average is: {AvgArray(ToIntArray(input))}");
                 break;
             case 8:
-                Console.WriteLine($"len is = :{LenArray(ToIntArray(input))}");
+                Console.WriteLine($"Length is: {LenArray(ToIntArray(input))}");
                 break;
             case 9:
-                Console.WriteLine($"sum is = :{SumArray(ToIntArray(input))}");
+                Console.WriteLine($"Sum is: {SumArray(ToIntArray(input))}");
                 break;
             case 10:
-                Environment.Exit(0);
-                break;
+                Console.WriteLine("Exiting... Goodbye!");
+                return (input, false);
             default:
-                Console.WriteLine("error");
-                break; 
+                Console.WriteLine("Invalid option. Please try again.");
+                break;
         }
-        return input;
 
+        return (input, true);
     }
 
+    //--------------------------------------------------------------
     static void Main(string[] args)
     {
-        args = RumValidInputLoop(args);
-        while (true)
+        args = RunValidInputLoop(args);
+        bool keepRunning = true;
+
+        while (keepRunning)
         {
-           args = RumMenu(args);
-        } 
+            (args, keepRunning) = RunMenu(args);
+        }
     }
 }
